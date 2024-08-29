@@ -1,0 +1,13 @@
+# Controller for the left wheels
+left_wheel_velocity_controller:
+  type: "velocity_controllers/JointGroupVelocityController"
+  joints:
+    - wheel_1_joint
+    - wheel_3_joint
+
+# Controller for the right wheels
+right_wheel_velocity_controller:
+  type: "velocity_controllers/JointGroupVelocityController"
+  joints:
+    - wheel_2_joint
+    - wheel_4_joint

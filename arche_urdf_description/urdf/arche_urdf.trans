@@ -1,0 +1,33 @@
+<?xml version="1.0" ?>
+<robot name="arche_urdf" xmlns:xacro="http://www.ros.org/wiki/xacro" >
+
+<!-- Transmissions for Left Side -->
+<transmission name="left_motor_trans">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="wheel_1_joint">
+    <hardwareInterface>EffortJointInterface</hardwareInterface>
+  </joint>
+  <joint name="wheel_3_joint">
+    <hardwareInterface>EffortJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="left_motor">
+    <mechanicalReduction>2.3</mechanicalReduction>
+  </actuator>
+</transmission>
+
+<!-- Transmissions for Right Side -->
+<transmission name="right_motor_trans">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="wheel_2_joint">
+    <hardwareInterface>EffortJointInterface</hardwareInterface>
+  </joint>
+  <joint name="wheel_4_joint">
+    <hardwareInterface>EffortJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="right_motor">
+    <mechanicalReduction>2.3</mechanicalReduction>
+  </actuator>
+</transmission>
+
+
+</robot>

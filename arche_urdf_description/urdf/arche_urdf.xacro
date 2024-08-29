@@ -1,0 +1,158 @@
+<?xml version="1.0" ?>
+<robot name="arche_urdf" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <xacro:include filename="$(find arche_urdf_description)/urdf/materials.xacro" />
+  <!-- <xacro:include filename="$(find arche_urdf_description)/urdf/arche_urdf.trans" /> -->
+  <xacro:include filename="$(find arche_urdf_description)/urdf/arche_urdf.gazebo" />
+  <link name="base_link">
+    <inertial>
+      <origin xyz="-2.7674005377574403e-14 0.03723621042929538 -0.020468098943149545" rpy="0 0 0"/>
+      <mass value="30"/>
+      <inertia ixx="0.255196" iyy="0.382972" izz="0.614376" ixy="0.0" iyz="-3.2e-05" ixz="0.0"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://arche_urdf_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="silver"/>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://arche_urdf_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="wheel_1">
+    <inertial>
+      <origin xyz="0.030000000000093355 7.337118966554979e-08 1.5598782084763618e-07" rpy="0 0 0"/>
+      <mass value="0.8"/>
+      <inertia ixx="0.002376" iyy="0.001972" izz="0.001972" ixy="0.0" iyz="-0.0" ixz="0.0"/>
+    </inertial>
+    <visual>
+      <origin xyz="-0.0916 0.090246 0.018979" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://arche_urdf_description/meshes/wheel_1.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="silver"/>
+    </visual>
+    <collision>
+      <origin xyz="-0.0916 0.090246 0.018979" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://arche_urdf_description/meshes/wheel_1.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="wheel_3">
+    <inertial>
+      <origin xyz="0.030000000000044935 7.337118876349358e-08 1.5598781887699031e-07" rpy="0 0 0"/>
+      <mass value="0.8"/>
+      <inertia ixx="0.002376" iyy="0.001972" izz="0.001972" ixy="0.0" iyz="0.0" ixz="0.0"/>
+    </inertial>
+    <visual>
+      <origin xyz="-0.1695 -0.157754 0.018979" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://arche_urdf_description/meshes/wheel_3.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="silver"/>
+    </visual>
+    <collision>
+      <origin xyz="-0.1695 -0.157754 0.018979" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://arche_urdf_description/meshes/wheel_3.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="wheel_4">
+    <inertial>
+      <origin xyz="-0.030000000000044935 7.337118887451588e-08 1.5598781892556257e-07" rpy="0 0 0"/>
+      <mass value="0.8"/>
+      <inertia ixx="0.002376" iyy="0.001972" izz="0.001972" ixy="-0.0" iyz="-0.0" ixz="0.0"/>
+    </inertial>
+    <visual>
+      <origin xyz="0.1695 -0.157754 0.018979" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://arche_urdf_description/meshes/wheel_4.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="silver"/>
+    </visual>
+    <collision>
+      <origin xyz="0.1695 -0.157754 0.018979" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://arche_urdf_description/meshes/wheel_4.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="wheel_2">
+    <inertial>
+      <origin xyz="-0.030000000000093355 7.337118966554979e-08 1.559878208858001e-07" rpy="0 0 0"/>
+      <mass value="0.8"/>
+      <inertia ixx="0.002376" iyy="0.001972" izz="0.001972" ixy="0.0" iyz="-0.0" ixz="0.0"/>
+    </inertial>
+    <visual>
+      <origin xyz="0.0916 0.090246 0.018979" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://arche_urdf_description/meshes/wheel_2.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="silver"/>
+    </visual>
+    <collision>
+      <origin xyz="0.0916 0.090246 0.018979" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://arche_urdf_description/meshes/wheel_2.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Wheel Joints -->
+  <joint name="wheel_1_joint" type="continuous">
+    <origin xyz="0.0916 -0.0902 -0.0189" rpy="0 0 0"/>
+    <parent link="base_link"/>
+    <child link="wheel_1"/>
+    <axis xyz="1.0 0.0 0.0"/>
+  </joint>
+
+  <joint name="wheel_3_joint" type="continuous">
+    <origin xyz="0.1695 0.1578 -0.0189" rpy="0 0 0"/>
+    <parent link="base_link"/>
+    <child link="wheel_3"/>
+    <axis xyz="1.0 0.0 0.0"/>
+  </joint>
+
+  <joint name="wheel_4_joint" type="continuous">
+    <origin xyz="-0.1695 0.1578 -0.0189" rpy="0 0 0"/>
+    <parent link="base_link"/>
+    <child link="wheel_4"/>
+    <axis xyz="-1.0 0.0 0.0"/>
+  </joint>
+
+  <joint name="wheel_2_joint" type="continuous">
+    <origin xyz="-0.0916 -0.0902 -0.0189" rpy="0 0 0"/>
+    <parent link="base_link"/>
+    <child link="wheel_2"/>
+    <axis xyz="-1.0 0.0 0.0"/>
+  </joint>
+
+  <gazebo>
+    <plugin name="skid_steer_drive_controller" filename="libgazebo_ros_skid_steer_drive.so">
+        <updateRate>100.0</updateRate>
+        <robotNamespace>/</robotNamespace>
+        <leftFrontJoint>wheel_1_joint</leftFrontJoint>
+        <rightFrontJoint>wheel_2_joint</rightFrontJoint>
+        <leftRearJoint>wheel_3_joint</leftRearJoint>
+        <rightRearJoint>wheel_4_joint</rightRearJoint>
+        <wheelSeparation>0.3</wheelSeparation>
+        <wheelDiameter>0.085</wheelDiameter>
+        <robotBaseFrame>base_link</robotBaseFrame>
+        <torque>30</torque>
+        <topicName>cmd_vel</topicName>
+        <broadcastTF>true</broadcastTF>
+    </plugin>
+  </gazebo>
+
+</robot>

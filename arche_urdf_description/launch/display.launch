@@ -1,0 +1,20 @@
+<launch>
+  <arg name="model" default="$(find arche_urdf_description)/urdf/arche_urdf.xacro"/>
+  <arg name="gui" default="true"/>
+  <arg name="rvizconfig" default="$(find arche_urdf_description)/launch/urdf.rviz"/>
+  <param name="robot_description" command="$(find xacro)/xacro $(arg model)"/>
+  <param name="use_gui" value="$(arg gui)"/>
+
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
+  <node name="rviz" pkg="rviz" args="-d $(arg rvizconfig)" type="rviz" required="true"/>
+
+  <group>
+    <node name="joint_state_publisher_gui" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui"/>
+    <test test-name="kill_joint_state_publisher_gui" pkg="rostest" type="roslaunch-check" time-limit="5.0"/>
+  </group>
+
+  <!-- <node name="controller_manager" pkg="controller_manager" type="controller_manager" respawn="false" output="screen"/> 
+
+  <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen"
+        args="wheel_1_controller wheel_2_controller wheel_3_controller wheel_4_controller" /> -->
+</launch>
